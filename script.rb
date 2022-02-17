@@ -1,5 +1,3 @@
-# ruby script.rb
-
 def stock_picker (stocks)
     best_sells = Array.new
     buy_price = Array.new
@@ -13,25 +11,20 @@ def stock_picker (stocks)
         next_num = stocks[stocks.index(first_num) + i] 
         total = next_num.to_i - first_num.to_i
 
-        if total > 0
+        best_sells.push(total)
+        buy_price.push(first_num)
+        sell_price.push(next_num)
         
-            best_sells.push(total)
-            buy_price.push(first_num)
-            sell_price.push(next_num)
-
-            end
         i += 1
         end
     end
+
     buy_sell[0] = stocks.index(buy_price[best_sells.index(best_sells.max)])
     buy_sell[1] = stocks.index(sell_price[best_sells.index(best_sells.max)])
    
-    print buy_sell
-    print stocks
-
-
+    p buy_sell
+    p stocks
 end
-
 
 data = [17,3,6,9,15,8,6,1,10].shuffle
 stock_picker(data)

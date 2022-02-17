@@ -3,7 +3,8 @@
 def stock_picker (stocks)
     best_sells = Array.new
     buy_price = Array.new
-    buy_day = Array.new
+    sell_price = Array.new
+    buy_sell = Array.new
 
     stocks.each do |first_num, next_num|
         i = 1
@@ -16,15 +17,22 @@ def stock_picker (stocks)
         
             best_sells.push(total)
             buy_price.push(first_num)
+            sell_price.push(next_num)
 
             end
         i += 1
         end
     end
-    buy_day[0] = stocks.index(buy_price[best_sells.index(best_sells.max)])
-    puts buy_day
+    buy_sell[0] = stocks.index(buy_price[best_sells.index(best_sells.max)])
+    buy_sell[1] = stocks.index(sell_price[best_sells.index(best_sells.max)])
+   
+    print buy_sell
+    print stocks
+
+
 end
 
-data = [17,3,6,9,15,8,6,1,10]
+
+data = [17,3,6,9,15,8,6,1,10].shuffle
 stock_picker(data)
 
